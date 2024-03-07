@@ -35,11 +35,15 @@ class FollowViewSet(CreateModelMixin, ListModelMixin, GenericViewSet):
     def perform_create(self, serializer: Serializer) -> Response:
 
         if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )
 
         follow = serializer.save(user=self.request.user)
 
-        return Response(FollowSerializer(follow).data, status=status.HTTP_201_CREATED)
+        return Response(
+            FollowSerializer(follow).data, status=status.HTTP_201_CREATED
+        )
 
     def get_queryset(self) -> List[Follow]:
         return Follow.objects.all().filter(
