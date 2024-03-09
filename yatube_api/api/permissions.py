@@ -2,7 +2,7 @@ from rest_framework.permissions import BasePermission, SAFE_METHODS
 from rest_framework.request import Request
 
 
-class OwnershipPermission(BasePermission):
+class IsOwnershipPermission(BasePermission):
 
     def has_object_permission(
             self, request: Request, view: object, obj: object
