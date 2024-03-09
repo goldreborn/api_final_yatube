@@ -1,7 +1,6 @@
 from rest_framework.serializers import (
     ModelSerializer, SlugRelatedField,
-    CurrentUserDefault, ReadOnlyField,
-    ValidationError, UniqueTogetherValidator
+    CurrentUserDefault, ValidationError, UniqueTogetherValidator
 )
 
 from posts.models import Follow, Post, Comment, Group, User
