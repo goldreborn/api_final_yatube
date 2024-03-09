@@ -1,10 +1,7 @@
 from rest_framework.serializers import Serializer
 from rest_framework.mixins import ListModelMixin, CreateModelMixin
-from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from django.db.models.query import QuerySet
-
-from posts.models import Follow
 
 
 class FolowCustom(CreateModelMixin, ListModelMixin, GenericViewSet):

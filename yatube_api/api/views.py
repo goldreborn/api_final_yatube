@@ -7,6 +7,7 @@ from rest_framework.viewsets import (
 )
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
+from django.db.models.query import QuerySet
 
 from posts.models import Post, Group, Follow
 from .permissions import IsOwnershipPermission
@@ -54,7 +55,7 @@ class CommentViewSet(ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnershipPermission]
 
-    def get_queryset(self) -> list[Follow]:
+    def get_queryset(self) -> QuerySet:
         return get_object_or_404(
             Post, pk=self.kwargs.get('post_id')
         ).comments.all()
